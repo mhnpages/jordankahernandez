@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { CalendarDays, Check, ChevronDown, Gift, MapPin, Music2, Pause } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, Gift, MapPin, MessageCircle, Music2, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,8 +16,23 @@ import jordankaField from "./assets/jordanka-field.webp";
 
 const EVENT_DATE = new Date("2026-12-18T14:00:00-06:00");
 const MUSIC_READY = false;
+const RSVP_WHATSAPP_NUMBER = "14698656022";
 const ceremonyMap = "https://www.google.com/maps/search/?api=1&query=3030+Gus+Thomasson+Rd+Dallas+TX+75228";
 const receptionMap = "https://www.google.com/maps/search/?api=1&query=Hawn+Event+Center+13953+C+F+Hawn+Freeway+Dallas+TX+75253";
+
+function createWhatsAppConfirmation(payload: { name: string; attendance: string; guests: number; message: string }) {
+  const attending = payload.attendance === "yes";
+  const lines = [
+    "Hola, confirmo mi asistencia a los Sweet Sixteen de Jordanka Hernández.",
+    "",
+    `Nombre: ${payload.name.trim()}`,
+    `Respuesta: ${attending ? "Sí, asistiré" : "No podré asistir"}`,
+    ...(attending ? [`Personas en la confirmación: ${payload.guests}`] : []),
+    ...(payload.message.trim() ? [`Mensaje: ${payload.message.trim()}`] : []),
+    "Fecha: 18 de diciembre de 2026",
+  ];
+  return `https://wa.me/${RSVP_WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
 
 type ModelContextDocument = Document & {
   modelContext?: {
@@ -93,6 +108,7 @@ export default function Home() {
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [attendance, setAttendance] = useState("yes");
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [whatsappConfirmation, setWhatsappConfirmation] = useState("");
   const audioRef = useRef<HTMLAudioElement>(null);
   const countdown = useCountdown();
 
@@ -133,11 +149,13 @@ export default function Home() {
   async function submitRsvp(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("sending");
+    const whatsappWindow = window.open("", "_blank");
+    if (whatsappWindow) whatsappWindow.opener = null;
     const form = new FormData(event.currentTarget);
     const payload = {
       name: String(form.get("name") ?? ""),
       attendance,
-      guests: Number(form.get("guests") ?? 1),
+      guests: attendance === "yes" ? Number(form.get("guests") ?? 1) : 0,
       message: String(form.get("message") ?? ""),
       website: String(form.get("website") ?? ""),
     };
@@ -148,8 +166,16 @@ export default function Home() {
         body: JSON.stringify(payload),
       });
       if (!response.ok) throw new Error("No se pudo guardar");
+      const whatsappUrl = createWhatsAppConfirmation(payload);
+      setWhatsappConfirmation(whatsappUrl);
       setStatus("success");
+      if (whatsappWindow) {
+        whatsappWindow.location.href = whatsappUrl;
+      } else {
+        window.location.assign(whatsappUrl);
+      }
     } catch {
+      whatsappWindow?.close();
       setStatus("error");
     }
   }
@@ -288,7 +314,9 @@ export default function Home() {
         {status === "success" ? (
           <div className="success-card" role="status" data-reveal data-visible="true">
             <span><Check /></span><p className="eyebrow">Respuesta recibida</p>
-            <h3>{attendance === "yes" ? "¡Nos encantará verte!" : "Gracias por hacérnoslo saber."}</h3><p>Tu confirmación quedó registrada.</p>
+            <h3>{attendance === "yes" ? "¡Nos encantará verte!" : "Gracias por hacérnoslo saber."}</h3>
+            <p>Tu respuesta quedó registrada. Termina de enviarla por WhatsApp.</p>
+            {whatsappConfirmation && <a className="whatsapp-confirmation" href={whatsappConfirmation} target="_blank" rel="noreferrer"><MessageCircle /> Enviar por WhatsApp</a>}
           </div>
         ) : (
           <form className="rsvp-form" onSubmit={submitRsvp} data-reveal>
@@ -304,6 +332,7 @@ export default function Home() {
             <div className="field-block"><Label htmlFor="message">Un mensaje para Jordanka <span>(opcional)</span></Label><Textarea id="message" name="message" maxLength={500} placeholder="Déjale unas palabras bonitas…" /></div>
             <input className="honeypot" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
             <Button type="submit" className="rsvp-submit" disabled={status === "sending"}>{status === "sending" ? "Registrando…" : "Confirmar asistencia"}</Button>
+            <p className="whatsapp-note"><MessageCircle /> Abriremos WhatsApp con tu respuesta lista para enviar.</p>
             {status === "error" && <p className="form-error" role="alert">No pudimos guardar tu respuesta. Intenta nuevamente.</p>}
           </form>
         )}

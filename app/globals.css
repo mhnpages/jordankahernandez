@@ -214,12 +214,17 @@ a { color: inherit; }
 .guest-select { width: 100%; }
 .rsvp-submit { width: 100%; min-height: 64px; border-radius: 0; background: var(--green-deep); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .rsvp-submit:hover { background: var(--rose-deep); }
+.whatsapp-note { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 13px 0 0; color: #66625c; font-size: .82rem; line-height: 1.45; text-align: center; }
+.whatsapp-note svg { width: 17px; height: 17px; flex: 0 0 auto; color: var(--green-deep); }
 .honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; }
 .form-error { margin: 15px 0 0; color: #a1333d; text-align: center; font-size: .9rem; }
 .success-card { min-height: 430px; display: grid; place-items: center; align-content: center; text-align: center; }
 .success-card>span { display: grid; place-items: center; width: 68px; aspect-ratio: 1; margin-bottom: 25px; border-radius: 50%; color: white; background: var(--green-deep); }
 .success-card h3 { margin: 16px 0 10px; font: 400 2.5rem/.95 var(--font-editorial); }
-.success-card>p:last-child { color: #66625c; }
+.success-card>p { color: #66625c; }
+.whatsapp-confirmation { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; margin-top: 25px; padding: 0 24px; color: white; background: var(--green-deep); font-size: .9rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: .2s ease; }
+.whatsapp-confirmation:hover { color: white; background: var(--rose-deep); }
+.whatsapp-confirmation svg { width: 20px; height: 20px; }
 
 footer { min-height: 460px; display: grid; place-items: center; align-content: center; gap: 14px; padding: 70px 24px; text-align: center; color: white; background: var(--green-deep); }
 .footer__monogram { margin: 0 0 12px; color: #e2aaa9; font: 400 4.5rem/.8 var(--font-editorial); }
