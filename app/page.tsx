@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { CalendarDays, Check, ChevronDown, Gift, MapPin, Music2, Pause, Sparkles } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, Gift, MapPin, Music2, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -155,12 +155,13 @@ export default function Home() {
 
       <div className={`entrance ${entered ? "entrance--open" : ""}`} aria-hidden={entered}>
         <div className="entrance__halo" />
-        <p className="eyebrow entrance__eyebrow">Una celebración extraordinaria</p>
+        <div className="entrance__edition"><span>Edición especial</span><span>No. 16</span></div>
+        <p className="eyebrow entrance__eyebrow">The Sweet Sixteen Issue</p>
         <button className="seal" onClick={enterInvitation} aria-label="Abrir invitación de Jordanka">
-          <span className="seal__initials">J·A·H</span><span className="seal__orbit" />
+          <span className="seal__initials">JA</span><span className="seal__orbit" />
         </button>
-        <h1 className="entrance__name">Jordanka</h1>
-        <p className="entrance__hint">Toca el sello para entrar</p>
+        <h1 className="entrance__name">Jordanka Hernández</h1>
+        <p className="entrance__hint">Rompe el sello para entrar</p>
       </div>
 
       {MUSIC_READY && entered && (
@@ -172,11 +173,14 @@ export default function Home() {
       <section className="hero" aria-label="Invitación principal">
         <img src="/jordanka-portrait.webp" alt="Jordanka junto a su caballo adornado con flores" className="hero__image" />
         <div className="hero__veil" />
-        <div className="hero__monogram" aria-hidden="true">16</div>
+        <div className="hero__cover-top"><span>Sweet Sixteen</span><span>Dallas · 2026</span></div>
+        <div className="hero__masthead" aria-hidden="true">Jordanka</div>
+        <div className="hero__issue" aria-hidden="true"><span>No.</span><strong>16</strong></div>
+        <div className="hero__vertical" aria-hidden="true">The debut issue · December eighteenth</div>
         <div className="hero__content">
-          <p className="eyebrow">Sweet Sixteen · 18.12.2026</p>
-          <h2><span>Jordanka</span><span>Hernández</span></h2>
-          <p className="hero__line">Una tarde para florecer. Una noche para recordar.</p>
+          <p className="eyebrow">Edición especial · 18.12.2026</p>
+          <h2><span>Su</span><span>momento.</span></h2>
+          <p className="hero__line">Una tarde para florecer.<br />Una noche para recordar.</p>
         </div>
         <a href="#historia" className="scroll-cue" aria-label="Descubrir la invitación"><span>Descubre</span><ChevronDown /></a>
       </section>
@@ -184,8 +188,8 @@ export default function Home() {
       <section id="historia" className="chapter chapter--ivory">
         <div className="chapter__number" aria-hidden="true">I</div>
         <div className="story-copy" data-reveal>
-          <Sparkles className="story-copy__spark" />
-          <p className="eyebrow">Con mucha ilusión</p>
+          <div className="story-copy__folio"><span>Profile</span><span>01</span></div>
+          <p className="eyebrow">La chica del momento</p>
           <h2>Hay momentos que merecen convertirse en historia.</h2>
           <p>Acompáñanos a celebrar los dieciséis años de Jordanka: una fecha que marca nuevos sueños, nuevas aventuras y recuerdos que viviremos juntos.</p>
           <div className="signature">Jordanka</div>
@@ -194,7 +198,7 @@ export default function Home() {
 
       <section className="portrait-break portrait-break--first">
         <img src="/jordanka-hat.webp" alt="Retrato de Jordanka con vestido rosa y sombrero blanco" loading="lazy" />
-        <div className="portrait-break__quote" data-reveal><span>Sixteen</span><strong>looks good on her.</strong></div>
+        <div className="portrait-break__quote" data-reveal><small>Cover story / 02</small><span>The girl</span><strong>of the moment.</strong></div>
       </section>
 
       <section className="date-stage">
@@ -229,20 +233,33 @@ export default function Home() {
       </section>
 
       <section className="gallery" aria-label="Galería de Jordanka">
-        <div className="gallery__heading" data-reveal><p className="eyebrow">En su elemento</p><h2>Wild heart.<br />Soft soul.</h2></div>
-        <div className="gallery__track">
-          <figure className="gallery__frame gallery__frame--wide"><img src="/jordanka-ride.webp" alt="Jordanka montando su caballo" loading="lazy" /></figure>
-          <figure className="gallery__frame gallery__frame--portrait"><img src="/jordanka-floral.webp" alt="Jordanka entre flores junto a su caballo" loading="lazy" /></figure>
-          <figure className="gallery__frame gallery__frame--wide"><img src="/jordanka-field.webp" alt="Jordanka y su caballo en el campo" loading="lazy" /></figure>
+        <div className="gallery__heading" data-reveal>
+          <div className="gallery__folio"><span>The Equestrian Edit</span><span>Portfolio 01</span></div>
+          <p className="eyebrow">En su propio mundo</p>
+          <h2>Wild grace.<br /><i>Soft soul.</i></h2>
+          <p className="gallery__intro">Tres retratos. Una protagonista. Desliza hacia abajo y entra en la historia.</p>
         </div>
-        <p className="gallery__hint">Desliza para ver más <span>→</span></p>
+        <div className="gallery__stack">
+          <figure className="gallery__slide gallery__slide--one">
+            <img src="/jordanka-ride.webp" alt="Jordanka montando su caballo" loading="lazy" />
+            <figcaption><span>Portrait 01 / Motion</span><strong>Born to be<br />remembered.</strong></figcaption>
+          </figure>
+          <figure className="gallery__slide gallery__slide--two">
+            <img src="/jordanka-floral.webp" alt="Jordanka entre flores junto a su caballo" loading="lazy" />
+            <figcaption><span>Portrait 02 / Bloom</span><strong>Where wild<br /><i>meets wonder.</i></strong></figcaption>
+          </figure>
+          <figure className="gallery__slide gallery__slide--three">
+            <img src="/jordanka-field.webp" alt="Jordanka y su caballo en el campo" loading="lazy" />
+            <figcaption><span>Portrait 03 / The Cover</span><strong>This is<br />sixteen.</strong></figcaption>
+          </figure>
+        </div>
       </section>
 
       <section className="gift-section chapter chapter--green">
         <div className="gift-card" data-reveal>
           <div className="gift-card__icon"><Gift /></div><p className="eyebrow">Un detalle con cariño</p><h2>Lluvia de sobres</h2>
           <p>Tu presencia es el regalo más bonito. Si deseas obsequiarle algo a Jordanka, celebraremos con una lluvia de sobres durante la recepción.</p>
-          <div className="gift-card__seal">J·A·H</div>
+          <div className="gift-card__seal">JA</div>
         </div>
       </section>
 
@@ -274,7 +291,7 @@ export default function Home() {
         )}
       </section>
 
-      <footer><p className="footer__monogram">J·A·H</p><p>18 · Diciembre · 2026</p><span>Nos vemos en Dallas</span></footer>
+      <footer><p className="footer__monogram">JA</p><p>18 · Diciembre · 2026</p><span>Nos vemos en Dallas</span></footer>
     </main>
   );
 }
