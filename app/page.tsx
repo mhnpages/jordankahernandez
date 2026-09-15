@@ -8,6 +8,11 @@ import { Label } from "@/components/ui/label";
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+import jordankaPortrait from "./assets/jordanka-portrait.webp";
+import jordankaHat from "./assets/jordanka-hat.webp";
+import jordankaRide from "./assets/jordanka-ride.webp";
+import jordankaFloral from "./assets/jordanka-floral.webp";
+import jordankaField from "./assets/jordanka-field.webp";
 
 const EVENT_DATE = new Date("2026-12-18T14:00:00-06:00");
 const MUSIC_READY = false;
@@ -171,7 +176,7 @@ export default function Home() {
       )}
 
       <section className="hero" aria-label="Invitación principal">
-        <img src="/jordanka-portrait.webp" alt="Jordanka junto a su caballo adornado con flores" className="hero__image" />
+        <img src={jordankaPortrait.src} alt="Jordanka junto a su caballo adornado con flores" className="hero__image" />
         <div className="hero__veil" />
         <div className="hero__cover-top"><span>Sweet Sixteen</span><span>Dallas · 2026</span></div>
         <div className="hero__masthead" aria-hidden="true">Jordanka</div>
@@ -197,7 +202,7 @@ export default function Home() {
       </section>
 
       <section className="portrait-break portrait-break--first">
-        <img src="/jordanka-hat.webp" alt="Retrato de Jordanka con vestido rosa y sombrero blanco" loading="lazy" />
+        <img src={jordankaHat.src} alt="Retrato de Jordanka con vestido rosa y sombrero blanco" />
         <div className="portrait-break__quote" data-reveal><small>Cover story / 02</small><span>The girl</span><strong>of the moment.</strong></div>
       </section>
 
@@ -241,15 +246,15 @@ export default function Home() {
         </div>
         <div className="gallery__stack">
           <figure className="gallery__slide gallery__slide--one">
-            <img src="/jordanka-ride.webp" alt="Jordanka montando su caballo" loading="lazy" />
+            <img src={jordankaRide.src} alt="Jordanka montando su caballo" />
             <figcaption><span>Portrait 01 / Motion</span><strong>Born to be<br />remembered.</strong></figcaption>
           </figure>
           <figure className="gallery__slide gallery__slide--two">
-            <img src="/jordanka-floral.webp" alt="Jordanka entre flores junto a su caballo" loading="lazy" />
+            <img src={jordankaFloral.src} alt="Jordanka entre flores junto a su caballo" />
             <figcaption><span>Portrait 02 / Bloom</span><strong>Where wild<br /><i>meets wonder.</i></strong></figcaption>
           </figure>
           <figure className="gallery__slide gallery__slide--three">
-            <img src="/jordanka-field.webp" alt="Jordanka y su caballo en el campo" loading="lazy" />
+            <img src={jordankaField.src} alt="Jordanka y su caballo en el campo" />
             <figcaption><span>Portrait 03 / The Cover</span><strong>This is<br />sixteen.</strong></figcaption>
           </figure>
         </div>

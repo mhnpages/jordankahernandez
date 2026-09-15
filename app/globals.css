@@ -6,7 +6,7 @@
 :root {
   --paper: #f4f2ee;
   --white: #fbfaf7;
-  --ink: #3f5b51;
+  --ink: #11110f;
   --rose: #c9858e;
   --rose-deep: #9d5f69;
   --rose-gold: #c58f82;
@@ -26,8 +26,8 @@
   --accent: #d9aaa4;
   --accent-foreground: var(--ink);
   --destructive: #a1333d;
-  --border: rgba(53, 79, 69, .25);
-  --input: rgba(53, 79, 69, .25);
+  --border: rgba(17, 17, 15, .22);
+  --input: rgba(17, 17, 15, .22);
   --ring: var(--rose-deep);
   --radius: 0;
   --font-editorial: "DM Serif Display", Georgia, serif;
@@ -148,9 +148,9 @@ a { color: inherit; }
 .events { color: var(--ink); }
 .events header { max-width: 760px; margin-bottom: 58px; }
 .events header h2 { text-transform: uppercase; }
-.event-list { display: grid; gap: 2px; background: var(--ink); border: 2px solid var(--ink); }
+.event-list { display: grid; gap: 2px; background: var(--green-deep); border: 2px solid var(--green-deep); }
 .event-card { position: relative; min-height: 390px; display: flex; flex-direction: column; justify-content: end; padding: 34px; overflow: hidden; background: var(--white); }
-.event-card--dark { color: white; background: var(--ink); }
+.event-card--dark { color: white; background: var(--green-deep); }
 .event-card__index { position: absolute; top: 25px; right: 28px; font: 400 4.5rem/.8 var(--font-editorial); opacity: .22; }
 .event-card h3 { max-width: 420px; margin: 12px 0 20px; font: 400 clamp(2.5rem, 8vw, 4.4rem)/.92 var(--font-editorial); letter-spacing: -.045em; }
 .event-card>p:not(.eyebrow) { margin: 0 0 25px; font-size: .95rem; line-height: 1.65; opacity: .74; }
@@ -180,14 +180,14 @@ a { color: inherit; }
 .gallery__slide figcaption strong { font: 400 clamp(3.4rem, 12vw, 7.6rem)/.96 var(--font-editorial); letter-spacing: -.025em; text-transform: uppercase; }
 .gallery__slide figcaption i { color: #efb7b8; font-weight: 400; text-transform: none; }
 
-.parents-note { color: var(--green-deep); background: var(--white); }
-.parents-note__folio { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--green-deep); font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.parents-note { color: var(--ink); background: var(--white); }
+.parents-note__folio { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--ink); font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .parents-note__title { margin-top: 58px; }
 .parents-note__title h2 { max-width: 900px; margin: 22px 0 0; font: 400 clamp(3rem, 9vw, 6.4rem)/1.02 var(--font-editorial); letter-spacing: -.02em; text-transform: uppercase; }
 .parents-note__title h2 i { display: inline-block; margin-top: 8px; color: var(--rose-deep); font-weight: 400; text-transform: none; }
 .parents-note__letter { width: min(100%, 620px); margin: 60px 0 0 auto; padding: 30px 0 0; border-top: 3px solid var(--rose-gold); }
-.parents-note__letter p { margin: 0 0 24px; color: #4d665c; font-size: 1rem; line-height: 1.8; }
-.parents-note__letter strong { display: block; margin-top: 35px; color: var(--green-deep); font: italic 400 1.65rem/1.35 var(--font-editorial); }
+.parents-note__letter p { margin: 0 0 24px; color: #514e48; font-size: 1rem; line-height: 1.8; }
+.parents-note__letter strong { display: block; margin-top: 35px; color: var(--ink); font: italic 400 1.65rem/1.35 var(--font-editorial); }
 
 .gift-section { min-height: 780px; display: grid; place-items: center; color: white; }
 .gift-card { position: relative; width: min(100%, 720px); padding: 70px 28px; text-align: center; border-top: 1px solid rgba(255,255,255,.5); border-bottom: 1px solid rgba(255,255,255,.5); }
@@ -209,10 +209,10 @@ a { color: inherit; }
 .rsvp-form textarea { min-height: 115px; resize: vertical; }
 .attendance-options { grid-template-columns: 1fr 1fr; gap: 8px; }
 .attendance-option { min-height: 62px; justify-content: center; border: 1px solid rgba(53,79,69,.32); cursor: pointer; transition: .2s ease; }
-.attendance-option--active { border-color: var(--ink); color: white; background: var(--ink); }
+.attendance-option--active { border-color: var(--green-deep); color: white; background: var(--green-deep); }
 .attendance-option--active [data-slot="radio-group-item"] { border-color: white; color: white; }
 .guest-select { width: 100%; }
-.rsvp-submit { width: 100%; min-height: 59px; border-radius: 0; background: var(--ink); font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; }
+.rsvp-submit { width: 100%; min-height: 64px; border-radius: 0; background: var(--green-deep); color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .rsvp-submit:hover { background: var(--rose-deep); }
 .honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; }
 .form-error { margin: 15px 0 0; color: #a1333d; text-align: center; font-size: .9rem; }
