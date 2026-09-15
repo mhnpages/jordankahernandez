@@ -151,7 +151,7 @@ export default function Home() {
         <div className="hero__issue" aria-hidden="true"><span>No.</span><strong>16</strong></div>
         <div className="hero__vertical" aria-hidden="true">The debut issue · December eighteenth</div>
         <div className="hero__content">
-          <p className="eyebrow">Edición especial · 18.12.2026</p>
+          <p className="eyebrow hero__edition"><span>Edición especial</span><span>18.12.2026</span></p>
           <h2><span>Su</span><span>momento.</span></h2>
           <p className="hero__line">Una tarde para florecer.<br />Una noche para recordar.</p>
         </div>

@@ -88,10 +88,12 @@ a { color: inherit; }
 .hero__cover-top { position: absolute; z-index: 3; top: 26px; left: 6vw; right: 6vw; display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.65); font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .hero__masthead { position: absolute; z-index: 3; top: 48px; left: 50%; width: 100%; transform: translateX(-50%); text-align: center; color: #fff; font: 400 clamp(3.7rem, 17.5vw, 11.5rem)/.92 var(--font-editorial); letter-spacing: -.025em; text-transform: uppercase; text-shadow: 0 2px 14px rgba(31,57,48,.24); }
 .hero__issue { position: absolute; z-index: 3; top: 25%; right: 6vw; display: grid; justify-items: end; color: #fff; }
-.hero__issue span { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; }
-.hero__issue strong { font: 400 clamp(3.8rem, 15vw, 7rem)/.95 var(--font-editorial); }
-.hero__vertical { position: absolute; z-index: 3; left: 16px; top: 34%; writing-mode: vertical-rl; transform: rotate(180deg); font-size: .7rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
+.hero__issue span { padding: 5px 7px 4px; border: 1px solid rgba(255,255,255,.34); border-radius: 999px; background: rgba(25,55,46,.62); box-shadow: 0 4px 18px rgba(20,43,36,.16); font-size: .74rem; font-weight: 700; letter-spacing: .16em; line-height: 1; text-transform: uppercase; backdrop-filter: blur(4px); }
+.hero__issue strong { font: 400 clamp(3.8rem, 15vw, 7rem)/.95 var(--font-editorial); text-shadow: 0 2px 14px rgba(19,44,36,.72); }
+.hero__vertical { position: absolute; z-index: 3; left: 16px; top: 34%; padding: 10px 6px; border: 1px solid rgba(255,255,255,.26); border-radius: 999px; background: rgba(25,55,46,.56); box-shadow: 0 5px 22px rgba(20,43,36,.18); writing-mode: vertical-rl; transform: rotate(180deg); font-size: .7rem; font-weight: 700; line-height: 1.15; letter-spacing: .2em; text-transform: uppercase; text-shadow: 0 1px 4px rgba(0,0,0,.48); backdrop-filter: blur(4px); }
 .hero__content { position: absolute; z-index: 4; left: 7vw; right: 7vw; bottom: 9vh; display: grid; align-items: end; }
+.hero__edition { display: flex; align-items: center; width: max-content; max-width: 100%; padding: 9px 11px 8px; border: 1px solid rgba(255,255,255,.27); border-radius: 999px; background: rgba(25,55,46,.62); box-shadow: 0 5px 22px rgba(20,43,36,.18); letter-spacing: .2em; text-shadow: 0 1px 4px rgba(0,0,0,.48); backdrop-filter: blur(4px); }
+.hero__edition span + span { margin-left: 10px; padding-left: 11px; border-left: 1px solid rgba(255,255,255,.5); }
 .hero__content h2 { margin: 15px 0 18px; color: #fff; font: 400 clamp(4rem, 17vw, 8.5rem)/.92 var(--font-editorial); letter-spacing: -.028em; text-transform: uppercase; }
 .hero__content h2 span { display: block; }
 .hero__content h2 span:last-child { margin-left: 12vw; color: #f0b8b9; font-style: italic; text-transform: none; }
@@ -256,8 +258,10 @@ footer span { margin-top: 8px; font-size: .75rem; letter-spacing: .16em; text-tr
   .entrance__name { font-size: clamp(3rem, 15.2vw, 4rem); }
   .hero__masthead { top: 58px; font-size: 19vw; }
   .hero__issue { top: 22%; }
-  .hero__vertical { top: 18%; left: 12px; }
+  .hero__vertical { top: 18%; left: 10px; padding: 9px 5px; font-size: .67rem; letter-spacing: .18em; }
   .hero__content { bottom: 11vh; }
+  .hero__edition { padding: 8px 9px 7px; font-size: .66rem; letter-spacing: .16em; }
+  .hero__edition span + span { margin-left: 7px; padding-left: 8px; }
   .hero__content h2 { font-size: 18vw; }
   .hero__line { max-width: 260px; font-size: .78rem; }
   .attendance-options { grid-template-columns: 1fr; }
