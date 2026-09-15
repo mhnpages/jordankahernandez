@@ -69,8 +69,21 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const previousOverflow = document.documentElement.style.overflow;
+    if (!entered) {
+      document.documentElement.style.overflow = "hidden";
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+    return () => {
+      document.documentElement.style.overflow = previousOverflow;
+    };
+  }, [entered]);
+
   async function enterInvitation() {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     setEntered(true);
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
     if (MUSIC_READY && audioRef.current) {
       try {
         await audioRef.current.play();

@@ -232,7 +232,7 @@ footer p:not(.footer__monogram) { margin: 0; font-size: .75rem; letter-spacing: 
 footer span { margin-top: 8px; font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; opacity: .58; }
 
 @media (min-width: 800px) {
-  .hero__image { object-position: center 38%; }
+  .hero__image { object-position: center 20%; }
   .hero__masthead { top: 44px; }
   .hero__content { left: 10vw; right: 10vw; bottom: 7vh; }
   .hero__content h2 span:last-child { margin-left: 7vw; }
@@ -256,6 +256,7 @@ footer span { margin-top: 8px; font-size: .75rem; letter-spacing: .16em; text-tr
   .entrance__name { font-size: clamp(3rem, 15.2vw, 4rem); }
   .hero__masthead { top: 58px; font-size: 19vw; }
   .hero__issue { top: 22%; }
+  .hero__vertical { top: 18%; left: 12px; }
   .hero__content { bottom: 11vh; }
   .hero__content h2 { font-size: 18vw; }
   .hero__line { max-width: 260px; font-size: .78rem; }
