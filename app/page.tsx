@@ -255,6 +255,19 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="parents-note chapter">
+        <div className="parents-note__folio"><span>Carta abierta</span><span>Con amor</span></div>
+        <div className="parents-note__title" data-reveal>
+          <p className="eyebrow">De parte de sus padres</p>
+          <h2>Para Jordanka,<br /><i>y para quienes han sido parte de su historia.</i></h2>
+        </div>
+        <div className="parents-note__letter" data-reveal>
+          <p>Jordanka, verte crecer ha sido el privilegio más hermoso de nuestras vidas. Nos llenas de orgullo con tu alegría, tu fuerza y esa manera tan tuya de convertir cada momento en algo especial. Hoy celebramos tus dieciséis años, pero también celebramos la maravillosa persona en la que te estás convirtiendo.</p>
+          <p>A nuestra familia y a nuestros amigos: gracias por acompañarla, quererla y dejar una huella en su camino. Cada uno de ustedes ocupa un lugar importante en esta historia. Su presencia hará que esta celebración sea todavía más inolvidable para ella y para nosotros.</p>
+          <strong>Con todo nuestro amor,<br />tus padres.</strong>
+        </div>
+      </section>
+
       <section className="gift-section chapter chapter--green">
         <div className="gift-card" data-reveal>
           <div className="gift-card__icon"><Gift /></div><p className="eyebrow">Un detalle con cariño</p><h2>Lluvia de sobres</h2>
