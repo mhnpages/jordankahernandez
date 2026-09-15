@@ -34,65 +34,11 @@ function createWhatsAppConfirmation(payload: { name: string; attendance: string;
   return `https://wa.me/${RSVP_WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
 
-type ModelContextDocument = Document & {
-  modelContext?: {
-    registerTool: (tool: {
-      name: string;
-      title: string;
-      description: string;
-      inputSchema: object;
-      annotations: { readOnlyHint: boolean; untrustedContentHint: boolean };
-      execute: (input: unknown) => Promise<unknown>;
-    }, options?: { signal: AbortSignal }) => void | Promise<void>;
-  };
-};
-
 function useCountdown() {
   const [remaining, setRemaining] = useState(() => EVENT_DATE.getTime() - Date.now());
   useEffect(() => {
     const timer = window.setInterval(() => setRemaining(EVENT_DATE.getTime() - Date.now()), 1000);
     return () => window.clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const context = (document as ModelContextDocument).modelContext;
-    if (!context?.registerTool) return;
-    const lifecycle = new AbortController();
-    void Promise.resolve(context.registerTool({
-      name: "submit_rsvp",
-      title: "Confirmar asistencia",
-      description: "Registra si una persona asistirá al Sweet Sixteen de Jordanka y cuántas personas incluye su confirmación.",
-      inputSchema: {
-        type: "object",
-        properties: {
-          name: { type: "string", minLength: 2, maxLength: 100 },
-          attendance: { type: "string", enum: ["yes", "no"] },
-          guests: { type: "integer", minimum: 1, maximum: 6 },
-          message: { type: "string", maxLength: 500 },
-        },
-        required: ["name", "attendance"],
-        additionalProperties: false,
-      },
-      annotations: { readOnlyHint: false, untrustedContentHint: false },
-      async execute(input) {
-        const value = input as { name?: unknown; attendance?: unknown; guests?: unknown; message?: unknown };
-        if (typeof value.name !== "string" || value.name.trim().length < 2) throw new Error("Se requiere un nombre válido.");
-        if (value.attendance !== "yes" && value.attendance !== "no") throw new Error("La asistencia debe ser yes o no.");
-        const guests = value.attendance === "no" ? 0 : Number(value.guests ?? 1);
-        if (value.attendance === "yes" && (!Number.isInteger(guests) || guests < 1 || guests > 6)) throw new Error("La cantidad de personas debe estar entre 1 y 6.");
-        const response = await fetch("/api/rsvp", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: value.name, attendance: value.attendance, guests, message: typeof value.message === "string" ? value.message : "" }),
-        });
-        if (!response.ok) throw new Error("No se pudo registrar la confirmación.");
-        setAttendance(value.attendance);
-        setStatus("success");
-        document.querySelector("#rsvp")?.scrollIntoView({ behavior: "smooth" });
-        return { registered: true, attendance: value.attendance, guests };
-      },
-    }, { signal: lifecycle.signal })).catch(() => undefined);
-    return () => lifecycle.abort();
   }, []);
   const value = Math.max(0, remaining);
   return {
@@ -107,7 +53,7 @@ export default function Home() {
   const [entered, setEntered] = useState(false);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [attendance, setAttendance] = useState("yes");
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "success">("idle");
   const [whatsappConfirmation, setWhatsappConfirmation] = useState("");
   const audioRef = useRef<HTMLAudioElement>(null);
   const countdown = useCountdown();
@@ -146,38 +92,21 @@ export default function Home() {
     }
   }
 
-  async function submitRsvp(event: FormEvent<HTMLFormElement>) {
+  function submitRsvp(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("sending");
-    const whatsappWindow = window.open("", "_blank");
-    if (whatsappWindow) whatsappWindow.opener = null;
     const form = new FormData(event.currentTarget);
     const payload = {
       name: String(form.get("name") ?? ""),
       attendance,
       guests: attendance === "yes" ? Number(form.get("guests") ?? 1) : 0,
       message: String(form.get("message") ?? ""),
-      website: String(form.get("website") ?? ""),
     };
-    try {
-      const response = await fetch("/api/rsvp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) throw new Error("No se pudo guardar");
-      const whatsappUrl = createWhatsAppConfirmation(payload);
-      setWhatsappConfirmation(whatsappUrl);
-      setStatus("success");
-      if (whatsappWindow) {
-        whatsappWindow.location.href = whatsappUrl;
-      } else {
-        window.location.assign(whatsappUrl);
-      }
-    } catch {
-      whatsappWindow?.close();
-      setStatus("error");
-    }
+    const whatsappUrl = createWhatsAppConfirmation(payload);
+    setWhatsappConfirmation(whatsappUrl);
+    setStatus("success");
+    const whatsappWindow = window.open(whatsappUrl, "_blank");
+    if (whatsappWindow) whatsappWindow.opener = null;
+    else window.location.assign(whatsappUrl);
   }
 
   return (
@@ -309,13 +238,13 @@ export default function Home() {
 
       <section id="rsvp" className="rsvp chapter chapter--ivory">
         <div className="chapter__number" aria-hidden="true">III</div>
-        <div className="rsvp__intro" data-reveal><p className="eyebrow">Tu lugar nos importa</p><h2>¿Celebras<br />con nosotros?</h2><p>Registra tu respuesta en menos de un minuto.</p></div>
+        <div className="rsvp__intro" data-reveal><p className="eyebrow">Tu lugar nos importa</p><h2>¿Celebras<br />con nosotros?</h2><p>Envíanos tu respuesta por WhatsApp en menos de un minuto.</p></div>
 
         {status === "success" ? (
           <div className="success-card" role="status" data-reveal data-visible="true">
-            <span><Check /></span><p className="eyebrow">Respuesta recibida</p>
+            <span><Check /></span><p className="eyebrow">Mensaje preparado</p>
             <h3>{attendance === "yes" ? "¡Nos encantará verte!" : "Gracias por hacérnoslo saber."}</h3>
-            <p>Tu respuesta quedó registrada. Termina de enviarla por WhatsApp.</p>
+            <p>Para completar tu confirmación, envía el mensaje preparado por WhatsApp.</p>
             {whatsappConfirmation && <a className="whatsapp-confirmation" href={whatsappConfirmation} target="_blank" rel="noreferrer"><MessageCircle /> Enviar por WhatsApp</a>}
           </div>
         ) : (
@@ -330,10 +259,8 @@ export default function Home() {
             </fieldset>
             {attendance === "yes" && <div className="field-block"><Label htmlFor="guests">Personas en tu confirmación</Label><NativeSelect id="guests" name="guests" defaultValue="1" className="guest-select">{[1,2,3,4,5,6].map((number) => <NativeSelectOption key={number} value={number}>{number}</NativeSelectOption>)}</NativeSelect></div>}
             <div className="field-block"><Label htmlFor="message">Un mensaje para Jordanka <span>(opcional)</span></Label><Textarea id="message" name="message" maxLength={500} placeholder="Déjale unas palabras bonitas…" /></div>
-            <input className="honeypot" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-            <Button type="submit" className="rsvp-submit" disabled={status === "sending"}>{status === "sending" ? "Registrando…" : "Confirmar asistencia"}</Button>
+            <Button type="submit" className="rsvp-submit"><MessageCircle /> Confirmar por WhatsApp</Button>
             <p className="whatsapp-note"><MessageCircle /> Abriremos WhatsApp con tu respuesta lista para enviar.</p>
-            {status === "error" && <p className="form-error" role="alert">No pudimos guardar tu respuesta. Intenta nuevamente.</p>}
           </form>
         )}
       </section>
