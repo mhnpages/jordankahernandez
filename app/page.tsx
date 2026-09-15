@@ -129,12 +129,12 @@ export default function Home() {
       <div className={`entrance ${entered ? "entrance--open" : ""}`} aria-hidden={entered}>
         <div className="entrance__halo" />
         <div className="entrance__edition"><span>Edición especial</span><span>No. 16</span></div>
-        <p className="eyebrow entrance__eyebrow">The Sweet Sixteen Issue</p>
-        <button className="seal" onClick={enterInvitation} aria-label="Abrir invitación de Jordanka">
-          <span className="seal__initials">JA</span><span className="seal__orbit" />
-        </button>
         <h1 className="entrance__name">Jordanka Hernández</h1>
-        <p className="entrance__hint">Rompe el sello para entrar</p>
+        <button className="seal" onClick={enterInvitation} aria-label="Abrir invitación de Jordanka">
+          <img src="/rose-entry.png" alt="" className="seal__flower" /><span className="seal__orbit" />
+        </button>
+        <p className="entrance__hint">Toca la flor para entrar</p>
+        <p className="eyebrow entrance__eyebrow">The Sweet Sixteen Issue</p>
       </div>
 
       {MUSIC_READY && entered && (
