@@ -92,7 +92,7 @@ a { color: inherit; }
 .hero__issue strong { font: 400 clamp(3.8rem, 15vw, 7rem)/.95 var(--font-editorial); text-shadow: 0 2px 14px rgba(19,44,36,.72); }
 .hero__vertical { position: absolute; z-index: 3; left: 16px; top: 34%; padding: 10px 6px; border: 1px solid rgba(255,255,255,.26); border-radius: 999px; background: rgba(25,55,46,.56); box-shadow: 0 5px 22px rgba(20,43,36,.18); writing-mode: vertical-rl; transform: rotate(180deg); font-size: .7rem; font-weight: 700; line-height: 1.15; letter-spacing: .2em; text-transform: uppercase; text-shadow: 0 1px 4px rgba(0,0,0,.48); backdrop-filter: blur(4px); }
 .hero__content { position: absolute; z-index: 4; left: 7vw; right: 7vw; bottom: 9vh; display: grid; align-items: end; }
-.hero__edition { display: flex; align-items: center; width: max-content; max-width: 100%; padding: 9px 11px 8px; border: 1px solid rgba(255,255,255,.27); border-radius: 999px; background: rgba(25,55,46,.62); box-shadow: 0 5px 22px rgba(20,43,36,.18); letter-spacing: .2em; text-shadow: 0 1px 4px rgba(0,0,0,.48); backdrop-filter: blur(4px); }
+.hero__edition { display: flex; align-items: center; width: max-content; max-width: 100%; margin: 11px 0 0 auto; padding: 7px 9px 6px; border: 1px solid rgba(255,255,255,.27); border-radius: 999px; background: rgba(25,55,46,.62); box-shadow: 0 5px 22px rgba(20,43,36,.18); font-size: .66rem; letter-spacing: .18em; text-shadow: 0 1px 4px rgba(0,0,0,.48); backdrop-filter: blur(4px); }
 .hero__edition span + span { margin-left: 10px; padding-left: 11px; border-left: 1px solid rgba(255,255,255,.5); }
 .hero__content h2 { margin: 15px 0 18px; color: #fff; font: 400 clamp(4rem, 17vw, 8.5rem)/.92 var(--font-editorial); letter-spacing: -.028em; text-transform: uppercase; }
 .hero__content h2 span { display: block; }
@@ -239,6 +239,7 @@ footer span { margin-top: 8px; font-size: .75rem; letter-spacing: .16em; text-tr
   .hero__content { left: 10vw; right: 10vw; bottom: 7vh; }
   .hero__content h2 span:last-child { margin-left: 7vw; }
   .hero__line { margin-right: 5vw; }
+  .hero__edition { margin-right: 5vw; }
   .chapter { padding: 150px 10vw; }
   .story-copy>p:not(.eyebrow) { font-size: 1.08rem; }
   .event-list { grid-template-columns: 1fr 1fr; }
@@ -260,7 +261,7 @@ footer span { margin-top: 8px; font-size: .75rem; letter-spacing: .16em; text-tr
   .hero__issue { top: 22%; }
   .hero__vertical { top: 18%; left: 10px; padding: 9px 5px; font-size: .67rem; letter-spacing: .18em; }
   .hero__content { bottom: 11vh; }
-  .hero__edition { padding: 8px 9px 7px; font-size: .66rem; letter-spacing: .16em; }
+  .hero__edition { margin-top: 9px; padding: 6px 7px 5px; font-size: .6rem; letter-spacing: .13em; }
   .hero__edition span + span { margin-left: 7px; padding-left: 8px; }
   .hero__content h2 { font-size: 18vw; }
   .hero__line { max-width: 260px; font-size: .78rem; }
