@@ -234,7 +234,7 @@ export default function Home() {
             <a href={receptionMap} target="_blank" rel="noreferrer"><MapPin /> Cómo llegar</a>
           </article>
         </div>
-        <p className="dress-note" data-reveal>Ven como tú eres. No hay código de vestimenta.</p>
+        <p className="dress-note" data-reveal>Vestimenta formal o tipo cóctel.</p>
       </section>
 
       <section className="gallery" aria-label="Galería de Jordanka">
