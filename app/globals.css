@@ -121,6 +121,7 @@ a { color: inherit; }
 .music-control { position: fixed; z-index: 95; left: 50%; right: auto; top: auto; bottom: max(16px, env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 5px; border: 1px solid rgba(255,255,255,.34); border-radius: 999px; padding: 7px 10px; color: white; background: rgba(155,78,101,.72); box-shadow: 0 6px 18px rgba(88,37,55,.16); backdrop-filter: blur(12px); font-size: .59rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; animation: music-float 3.6s ease-in-out infinite; }
 .music-control svg { width: 12px; height: 12px; }
 @keyframes music-float { 0%, 100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,-4px); } }
+@keyframes music-float-right { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 
 /* Editorial features */
 .chapter { position: relative; padding: 110px 7vw; }
@@ -279,6 +280,7 @@ footer span { margin-top: 8px; font-size: .75rem; letter-spacing: .16em; text-tr
 }
 
 @media (max-width: 430px) {
+  .music-control { left: auto; right: max(10px, env(safe-area-inset-right)); animation-name: music-float-right; }
   .entrance__edition { top: 28px; left: 28px; right: 28px; }
   .entrance__name { font-size: clamp(3rem, 15.2vw, 4rem); }
   .hero__masthead { top: 58px; font-size: 19vw; }
