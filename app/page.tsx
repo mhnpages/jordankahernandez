@@ -15,7 +15,7 @@ import jordankaFloral from "./assets/jordanka-floral.webp";
 import jordankaField from "./assets/jordanka-field.webp";
 
 const EVENT_DATE = new Date("2026-12-18T14:00:00-06:00");
-const MUSIC_READY = false;
+const MUSIC_READY = true;
 const RSVP_WHATSAPP_NUMBER = "14698656022";
 const ceremonyMap = "https://www.google.com/maps/search/?api=1&query=3030+Gus+Thomasson+Rd+Dallas+TX+75228";
 const receptionMap = "https://www.google.com/maps/search/?api=1&query=Hawn+Event+Center+13953+C+F+Hawn+Freeway+Dallas+TX+75253";
@@ -86,6 +86,7 @@ export default function Home() {
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
     if (MUSIC_READY && audioRef.current) {
       try {
+        audioRef.current.volume = 0.55;
         await audioRef.current.play();
         setMusicPlaying(true);
       } catch {

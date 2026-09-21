@@ -131,7 +131,7 @@ a { color: inherit; }
 .story-copy__folio, .gallery__folio { display: flex; justify-content: space-between; padding: 0 0 11px; border-bottom: 1px solid currentColor; font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .story-copy>.eyebrow { margin-top: 38px; }
 .story-copy h2, .events header h2, .gallery__heading h2, .gift-card h2, .rsvp__intro h2 { margin: 20px 0; font: 400 clamp(3rem, 9.8vw, 6.6rem)/1.02 var(--font-editorial); letter-spacing: -.025em; }
-.story-copy h2 { max-width: 840px; text-transform: uppercase; }
+.story-copy h2 { max-width: 840px; font-family: var(--font-script); font-style: italic; font-weight: 600; text-transform: none; }
 .story-copy>p:not(.eyebrow) { width: min(100%, 520px); margin: 40px 0 0 auto; padding-left: 25px; border-left: 3px solid var(--rose); color: #514e48; font-size: 1rem; line-height: 1.75; }
 .signature { margin-top: 45px; font: italic 600 3.25rem/1 var(--font-script); }
 [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
@@ -171,7 +171,7 @@ a { color: inherit; }
 
 .events { color: var(--ink); }
 .events header { max-width: 760px; margin-bottom: 58px; }
-.events header h2 { text-transform: uppercase; }
+.events header h2 { font-family: var(--font-script); font-style: italic; font-weight: 600; text-transform: none; }
 .event-list { display: grid; gap: 2px; background: var(--rose-deep); border: 2px solid var(--rose-deep); }
 .event-card { position: relative; min-height: 390px; display: flex; flex-direction: column; justify-content: end; padding: 34px; overflow: hidden; background: var(--white); }
 .event-card--dark { color: var(--ink); background: #d99aa7; }
