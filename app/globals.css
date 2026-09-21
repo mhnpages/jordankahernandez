@@ -118,8 +118,9 @@ a { color: inherit; }
 .scroll-cue { position: absolute; z-index: 5; left: 7vw; bottom: 3.2vh; display: flex; align-items: center; gap: 9px; text-decoration: none; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; }
 .scroll-cue svg { width: 17px; animation: float 2s ease-in-out infinite; }
 @keyframes float { 50% { transform: translateY(6px); } }
-.music-control { position: fixed; z-index: 95; right: 16px; top: 16px; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; padding: 10px 14px; background: rgba(155,78,101,.86); color: white; backdrop-filter: blur(14px); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
-.music-control svg { width: 15px; }
+.music-control { position: fixed; z-index: 95; left: 50%; right: auto; top: auto; bottom: max(16px, env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 5px; border: 1px solid rgba(255,255,255,.34); border-radius: 999px; padding: 7px 10px; color: white; background: rgba(155,78,101,.72); box-shadow: 0 6px 18px rgba(88,37,55,.16); backdrop-filter: blur(12px); font-size: .59rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; animation: music-float 3.6s ease-in-out infinite; }
+.music-control svg { width: 12px; height: 12px; }
+@keyframes music-float { 0%, 100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,-4px); } }
 
 /* Editorial features */
 .chapter { position: relative; padding: 110px 7vw; }
