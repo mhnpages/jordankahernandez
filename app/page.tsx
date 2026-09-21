@@ -137,6 +137,12 @@ export default function Home() {
         <p className="eyebrow entrance__eyebrow">The Sweet Sixteen Issue</p>
       </div>
 
+      {entered && (
+        <div className="floating-flowers" aria-hidden="true">
+          {Array.from({ length: 8 }, (_, index) => <img key={index} src="/rose-entry.png" alt="" className="floating-flower" />)}
+        </div>
+      )}
+
       {MUSIC_READY && entered && (
         <button className="music-control" onClick={toggleMusic} aria-label={musicPlaying ? "Pausar música" : "Reproducir música"}>
           {musicPlaying ? <Pause /> : <Music2 />}<span>{musicPlaying ? "Pausar" : "Música"}</span>
