@@ -23,7 +23,7 @@ const receptionMap = "https://www.google.com/maps/search/?api=1&query=Hawn+Event
 function createWhatsAppConfirmation(payload: { name: string; attendance: string; guests: number; message: string }) {
   const attending = payload.attendance === "yes";
   const lines = [
-    "Hola, confirmo mi asistencia a los Sweet Sixteen de Jordanka Hernández.",
+    "Hola, confirmo mi asistencia a la celebración de los dieciséis años de Jordanka Hernández.",
     "",
     `Nombre: ${payload.name.trim()}`,
     `Respuesta: ${attending ? "Sí, asistiré" : "No podré asistir"}`,
@@ -129,13 +129,13 @@ export default function Home() {
 
       <div className={`entrance ${entered ? "entrance--open" : ""}`} aria-hidden={entered}>
         <div className="entrance__halo" />
-        <div className="entrance__edition"><span>Edición especial</span><span>No. 16</span></div>
+        <div className="entrance__edition"><span>Edición especial</span><span>Núm. 16</span></div>
         <h1 className="entrance__name">Jordanka Hernández</h1>
         <button className="seal" onClick={enterInvitation} aria-label="Abrir invitación de Jordanka">
           <img src="/rose-entry.png" alt="" className="seal__flower" /><span className="seal__orbit" />
         </button>
         <p className="entrance__hint">Toca la flor para entrar</p>
-        <p className="eyebrow entrance__eyebrow">The Sweet Sixteen Issue</p>
+        <p className="eyebrow entrance__eyebrow">La edición de sus dieciséis</p>
       </div>
 
       {entered && (
@@ -153,10 +153,10 @@ export default function Home() {
       <section className="hero" aria-label="Invitación principal">
         <img src={jordankaPortrait.src} alt="Jordanka junto a su caballo adornado con flores" className="hero__image" />
         <div className="hero__veil" />
-        <div className="hero__cover-top"><span>Sweet Sixteen</span><span>Dallas · 2026</span></div>
+        <div className="hero__cover-top"><span>Mis dieciséis</span><span>Dallas · 2026</span></div>
         <div className="hero__masthead" aria-hidden="true">Jordanka</div>
-        <div className="hero__issue" aria-hidden="true"><span>No.</span><strong>16</strong></div>
-        <div className="hero__vertical" aria-hidden="true">The debut issue · December eighteenth</div>
+        <div className="hero__issue" aria-hidden="true"><span>Núm.</span><strong>16</strong></div>
+        <div className="hero__vertical" aria-hidden="true">La edición inaugural · Dieciocho de diciembre</div>
         <div className="hero__content">
           <h2><span>Su</span><span>momento.</span></h2>
           <p className="hero__line">Una tarde para florecer.<br />Una noche para recordar.</p>
@@ -168,7 +168,7 @@ export default function Home() {
       <section id="historia" className="chapter chapter--ivory">
         <div className="chapter__number" aria-hidden="true">I</div>
         <div className="story-copy" data-reveal>
-          <div className="story-copy__folio"><span>Profile</span><span>01</span></div>
+          <div className="story-copy__folio"><span>Retrato</span><span>01</span></div>
           <p className="eyebrow">La chica del momento</p>
           <h2>Hay momentos que merecen convertirse en historia.</h2>
           <p>Acompáñanos a celebrar los dieciséis años de Jordanka: una fecha que marca nuevos sueños, nuevas aventuras y recuerdos que viviremos juntos.</p>
@@ -178,7 +178,7 @@ export default function Home() {
 
       <section className="portrait-break portrait-break--first">
         <img src={jordankaHat.src} alt="Retrato de Jordanka con vestido rosa y sombrero blanco" />
-        <div className="portrait-break__quote" data-reveal><small>Cover story / 02</small><span>The girl</span><strong>of the moment.</strong></div>
+        <div className="portrait-break__quote" data-reveal><small>Historia de portada / 02</small><span>La joven</span><strong>del momento.</strong></div>
       </section>
 
       <section className="date-stage">
@@ -209,28 +209,28 @@ export default function Home() {
             <a href={receptionMap} target="_blank" rel="noreferrer"><MapPin /> Cómo llegar</a>
           </article>
         </div>
-        <p className="dress-note" data-reveal>Vestimenta formal o tipo cóctel.</p>
+        <p className="dress-note" data-reveal>Vestimenta formal o tipo cóctel.<br /><span>Se reserva el color rosa para Jordanka.</span></p>
       </section>
 
       <section className="gallery" aria-label="Galería de Jordanka">
         <div className="gallery__heading" data-reveal>
-          <div className="gallery__folio"><span>The Equestrian Edit</span><span>Portfolio 01</span></div>
+          <div className="gallery__folio"><span>La edición ecuestre</span><span>Portafolio 01</span></div>
           <p className="eyebrow">En su propio mundo</p>
-          <h2>Wild grace.<br /><i>Soft soul.</i></h2>
+          <h2>Gracia indomable.<br /><i>Alma serena.</i></h2>
           <p className="gallery__intro">Tres retratos. Una protagonista. Desliza hacia abajo y entra en la historia.</p>
         </div>
         <div className="gallery__stack">
           <figure className="gallery__slide gallery__slide--one">
             <img src={jordankaRide.src} alt="Jordanka montando su caballo" />
-            <figcaption><span>Portrait 01 / Motion</span><strong>Born to be<br />remembered.</strong></figcaption>
+            <figcaption><span>Retrato 01 / Movimiento</span><strong>Nacida para ser<br />recordada.</strong></figcaption>
           </figure>
           <figure className="gallery__slide gallery__slide--two">
             <img src={jordankaFloral.src} alt="Jordanka entre flores junto a su caballo" />
-            <figcaption><span>Portrait 02 / Bloom</span><strong>Where wild<br /><i>meets wonder.</i></strong></figcaption>
+            <figcaption><span>Retrato 02 / Florecer</span><strong>Donde lo indomable<br /><i>encuentra la magia.</i></strong></figcaption>
           </figure>
           <figure className="gallery__slide gallery__slide--three">
             <img src={jordankaField.src} alt="Jordanka y su caballo en el campo" />
-            <figcaption><span>Portrait 03 / The Cover</span><strong>This is<br />sixteen.</strong></figcaption>
+            <figcaption><span>Retrato 03 / La portada</span><strong>Así se viven<br />los dieciséis.</strong></figcaption>
           </figure>
         </div>
       </section>

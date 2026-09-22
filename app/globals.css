@@ -183,6 +183,7 @@ a { color: inherit; }
 .event-card a { display: inline-flex; align-items: center; gap: 8px; width: max-content; padding-bottom: 6px; border-bottom: 1px solid currentColor; text-decoration: none; font-size: .75rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
 .event-card a svg { width: 16px; }
 .dress-note { margin: 38px 0 0; text-align: center; font-size: .8rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; }
+.dress-note span { display: inline-block; margin-top: 10px; color: var(--rose-deep); font: italic 600 1.25rem/1.2 var(--font-script); letter-spacing: .03em; text-transform: none; }
 
 /* Immersive editorial gallery */
 .gallery { position: relative; background: var(--rose-deep); color: white; }
