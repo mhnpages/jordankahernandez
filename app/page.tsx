@@ -199,12 +199,14 @@ export default function Home() {
         <header data-reveal><p className="eyebrow">El recorrido</p><h2>Dos momentos.<br />Una misma celebración.</h2></header>
         <div className="event-list">
           <article className="event-card" data-reveal>
-            <span className="event-card__index">01</span><p className="eyebrow">Misa</p><h3>2:00 p. m.</h3>
+            <span className="event-card__index">01</span><p className="eyebrow">Misa</p><h3>San Pío X</h3>
+            <p className="event-card__time">2:00 p. m.</p>
             <p>3030 Gus Thomasson Rd<br />Dallas, TX 75228</p>
             <a href={ceremonyMap} target="_blank" rel="noreferrer"><MapPin /> Cómo llegar</a>
           </article>
           <article className="event-card event-card--dark" data-reveal>
             <span className="event-card__index">02</span><p className="eyebrow">Celebración</p><h3>Hawn Event Center</h3>
+            <p className="event-card__time">De las 6:00 p. m. en adelante</p>
             <p>13953 C F Hawn Freeway<br />Dallas, TX 75253</p>
             <a href={receptionMap} target="_blank" rel="noreferrer"><MapPin /> Cómo llegar</a>
           </article>
